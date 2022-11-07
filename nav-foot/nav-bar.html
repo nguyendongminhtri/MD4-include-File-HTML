@@ -52,7 +52,8 @@
 </nav>
 <script>
     console.log('NAME NAV --> ', window.localStorage.getItem('NAME_KEY'))
-    document.getElementById('name').innerHTML =  window.localStorage.getItem('NAME_KEY');
+    let name = window.localStorage.getItem('NAME_KEY');
+    document.getElementById('name').innerHTML = name ;
 </script>
 <script src="nav-bar.js"></script>
 </body>
