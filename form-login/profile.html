@@ -19,6 +19,10 @@
 </div>
 <div w3-include-html="/nav-foot/footer.html"></div>
 <script>
+    console.log('NAME NAV --> ', window.localStorage.getItem('NAME_KEY'))
+    document.getElementById('name').innerHTML =  window.localStorage.getItem('NAME_KEY');
+</script>
+<script>
     includeHTML()
 </script>
 </body>
