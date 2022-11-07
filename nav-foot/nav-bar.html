@@ -49,6 +49,9 @@
         </ul>
     </div>
 </nav>
-<script src="nav-bar.js"></script>
+<script>
+    console.log('NAME NAV --> ', window.localStorage.getItem('NAME_KEY'))
+    document.getElementById('name').innerHTML =  window.localStorage.getItem('NAME_KEY');
+</script>
 </body>
 </html>
