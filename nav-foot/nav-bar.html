@@ -39,10 +39,10 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/form-login/register.html">Register</a>
+                <a class="nav-link" href="/form-login/register.html" id="register">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/form-login/login.html">Login</a>
+                <a class="nav-link" href="/form-login/login.html" id="login">Login</a>
             </li>
             <li class="nav-item" >
                 <a id="name" style="float: right" class="nav-link" href="#"></a>
@@ -66,10 +66,15 @@
     </div>
 </nav>
 <script>
-    console.log('NAME NAV --> ', window.localStorage.getItem('NAME_KEY'))
-    let name = window.localStorage.getItem('NAME_KEY');
-    document.getElementById('name').innerHTML = name ;
-    document.getElementById('avatar').src = window.localStorage.getItem('AVATAR_KEY');
+    if(window.localStorage.getItem('TOKEN_KEY')!==null){
+        console.log('NAME NAV --> ', window.localStorage.getItem('NAME_KEY'))
+        let name = window.localStorage.getItem('NAME_KEY');
+        document.getElementById('name').innerHTML = name ;
+        document.getElementById('avatar').src = window.localStorage.getItem('AVATAR_KEY');
+        document.getElementById('register').innerHTML = '';
+        document.getElementById('login').innerHTML = '';
+    }
+
 </script>
 <!--<script src="nav-bar.js"></script>-->
 </body>
