@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="nav-foot/include.js"></script>
-    <script src="nav-foot/nav-bar.js"></script>
+    <script src="../nav-foot/include.js"></script>
+</head>
 <body>
 <div w3-include-html="../nav-foot/nav-bar.html"></div>
 <script>
     includeHTML()
 </script>
-<h1>Home</h1>
-<button class="btn btn-primary">Primary</button>
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <h1>Welcome Profile</h1>
+        </div>
+    </div>
+</div>
 <div w3-include-html="/nav-foot/footer.html"></div>
 <script>
     includeHTML()
 </script>
-<!--<script src="nav-bar.js"></script>-->
 </body>
 </html>

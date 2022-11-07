@@ -1,76 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link rel="stylesheet" href="register.css">
-  <script src="../nav-foot/include.js"></script>
+    <link rel="stylesheet" href="register.css">
+    <script src="../nav-foot/include.js"></script>
 
 </head>
 <body>
 <div w3-include-html="../nav-foot/nav-bar.html"></div>
 <script>
-  includeHTML()
+    includeHTML()
 </script>
 <section class="vh-100 bg-image"
          style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form>
+                            <form>
+                                <label id="validate" class="form-label" style="color: red"></label>
+                                <a id="login" href="/form-login/login.html"></a>
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="name" oninput="validate()" class="form-control form-control-lg"/>
+                                    <label class="form-label" id="validate_name">Your Name</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="username" oninput="validate()" class="form-control form-control-lg"/>
+                                    <label id="validate_username" class="form-label">Username</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="email" oninput="validate()" class="form-control form-control-lg"/>
+                                    <label id="validate_email" class="form-label">Your Email</label>
+                                </div>
 
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="password" oninput="validate()" class="form-control form-control-lg"/>
+                                    <label id="validate_password" class="form-label">Password</label>
+                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                  <input type="password" id="repeat_pass" oninput="validate()" class="form-control form-control-lg" />
+                                                  <label id="validate_repeat" class="form-label" >Repeat your password</label>
+                                                </div>
+
+                                <div class="form-check d-flex justify-content-center mb-5">
+                                    <input class="form-check-input me-2"  type="checkbox"  id="form2Example3cg"/>
+                                    <label class="form-check-label">
+                                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" id="btn-register"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                        Register
+                                    </button>
+                                </div>
+
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                                                                                                        class="fw-bold text-body"><u>Login
+                                    here</u></a></p>
+
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">Your Email</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Password</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                </div>
-
-                <div class="form-check d-flex justify-content-center mb-5">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                  <label class="form-check-label" >
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                  <button type="button"
-                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                </div>
-
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
-                                                                                        class="fw-bold text-body"><u>Login here</u></a></p>
-
-              </form>
-
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
-<div w3-include-html="./footer.html"></div>
+<!--AJAX-->
 <script>
-  includeHTML()
+    let email;
+    function validateEmail() {
+         email = document.getElementById('email').value;
+        console.log('email --> ', email)
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return (true)
+        }
+        return (false)
+    }
+    function validate() {
+        let name = document.getElementById('name').value;
+        console.log('name ---> ', name)
+        if(name ===''){
+            document.getElementById('validate_name').innerHTML = '<label style="color: red">The name is required!</label>'
+            return
+        } else {
+            document.getElementById('validate_name').innerHTML = ''
+        }
+        let username = document.getElementById('username').value;
+        console.log('name ---> ', name)
+        if(username ===''){
+            document.getElementById('validate_username').innerHTML = '<label style="color: red">The username is required!</label>'
+            return;
+        } else if(username.length<3||username.length>50){
+            document.getElementById('validate_username').innerHTML = '<label style="color: red">The username is must be more than 3 character OR must be less than 6!</label>'
+            return;
+        } else {
+            document.getElementById('validate_username').innerHTML = ''
+        }
+        if(!validateEmail()){
+           document.getElementById('validate_email').innerHTML = '<label style="color: red">The email is valid!</label>'
+            return;
+        } else {
+            document.getElementById('validate_email').innerHTML = ''
+        }
+        let password = document.getElementById('password').value;
+        if(password ===''){
+            document.getElementById('validate_password').innerHTML = '<label style="color: red">The username is required!</label>'
+            return;
+        } else if(password.length>6){
+            document.getElementById('validate_password').innerHTML = '<label style="color: red">The username is must be more than 3 character OR must be less than 6!</label>'
+            return;
+        } else {
+            document.getElementById('validate_password').innerHTML = ''
+        }
+        let repeat_pass = document.getElementById('repeat_pass').value;
+        if(repeat_pass!==password){
+            document.getElementById('validate_repeat').innerHTML = '<label style="color: red">The password does not match!</label>'
+        } else {
+            document.getElementById('validate_repeat').innerHTML = ''
+        }
+    }
+    $(document).ready(function () {
+        let signUpForm = {}
+
+        $('#btn-register').click(function () {
+            validate();
+            signUpForm.name = $('#name').val();
+            signUpForm.username = $('#username').val();
+            signUpForm.email = $('#email').val();
+            signUpForm.password = $('#password').val();
+            signUpForm.roles = ["admin"]
+            let signUpFormOBJ = JSON.stringify(signUpForm);
+            $.ajax({
+                url: 'http://localhost:8080/api/auth/signup',
+                contentType: 'application/json; charset=UTF8',
+                method: 'POST',
+                data: signUpFormOBJ,
+                success: function (data) {
+                    if(data.message==='nouser'){
+                        document.getElementById('validate').innerHTML = 'The username is existed!'
+                        return
+                    }
+                    if(data.message==='noemail'){
+                        document.getElementById('validate').innerHTML = 'The email is existed!'
+                        return;
+                    }
+                    if(data.message==='yes'){
+                        document.getElementById('validate').innerHTML = 'Create Success!'
+                        document.getElementById('login').innerHTML = '---> Please Login'
+                    }
+                }
+            })
+        })
+    })
+</script>
+<!--END AJAX-->
+<div w3-include-html="../nav-foot/footer.html"></div>
+<script>
+    includeHTML()
 </script>
 </body>
 </html>
